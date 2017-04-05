@@ -98,3 +98,13 @@ extension iRGameListViewController : UICollectionViewDelegate, UICollectionViewD
     }
     
 }
+
+
+extension String {
+    func indexOf(_ myTarget : String) -> Int? {
+        if let myRange = self.range(of: myTarget) {
+            return distance(from: self.startIndex, to: myRange.lowerBound)
+        }
+        return nil
+    }
+}

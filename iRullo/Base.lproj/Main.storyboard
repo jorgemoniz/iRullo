@@ -102,6 +102,11 @@
                                             <constraint firstAttribute="trailing" secondItem="MsO-1k-KAX" secondAttribute="trailing" constant="8" id="xdz-HT-i1Z"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="myBorrowedDateGame" destination="5g5-2U-dwG" id="a4J-uT-1c3"/>
+                                            <outlet property="myBorrowedGame" destination="qEK-qd-6xe" id="6vr-kD-bC9"/>
+                                            <outlet property="myBorrowedToGame" destination="fin-fg-p6K" id="hQh-0w-Lnj"/>
+                                            <outlet property="myImageGame" destination="odI-6D-g5j" id="HdR-6I-Pv1"/>
+                                            <outlet property="myTituloGame" destination="ejC-uL-RCU" id="dwN-aL-ABK"/>
                                             <segue destination="6Ce-hz-dQs" kind="push" identifier="editGameSegue" id="iwv-hP-azp"/>
                                         </connections>
                                     </collectionViewCell>
