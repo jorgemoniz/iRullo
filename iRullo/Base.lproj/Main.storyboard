@@ -12,7 +12,7 @@
         <!--Mis juegos-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="iRullo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="iRGameListViewController" customModule="iRullo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -42,7 +42,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5dc-qt-HXF">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="5dc-qt-HXF" customClass="iRCustomCell" customModule="iRullo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="304" height="400"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -121,17 +121,19 @@
                     </view>
                     <navigationItem key="navigationItem" title="Mis juegos" id="U7d-1F-zIz"/>
                     <connections>
-                        <segue destination="EWd-Lk-MLP" kind="presentation" identifier="addGameSegue" id="iNb-NU-wXU"/>
+                        <outlet property="myCollectionView" destination="6Fg-YM-pQb" id="DqK-X4-QOU"/>
+                        <outlet property="myFilterSegmentCon" destination="GfL-5f-cAo" id="pqr-4y-6DA"/>
+                        <segue destination="a5L-tl-Bam" kind="presentation" identifier="addGameSegue" id="5bD-3h-dEw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1055.625" y="123.59154929577466"/>
         </scene>
-        <!--View Controller-->
+        <!--Add New Game View Controller-->
         <scene sceneID="aCa-ec-2kP">
             <objects>
-                <viewController id="6Ce-hz-dQs" sceneMemberID="viewController">
+                <viewController id="6Ce-hz-dQs" customClass="iRAddNewGameViewController" customModule="iRullo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rIj-s5-Bvo"/>
                         <viewControllerLayoutGuide type="bottom" id="p94-uu-W1r"/>
@@ -160,6 +162,9 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l4H-OS-zdp">
                                 <rect key="frame" x="162" y="371" width="51" height="31"/>
                                 <color key="onTintColor" red="0.52156862749999999" green="0.10980392160000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="mySwitchChangedValue:" destination="6Ce-hz-dQs" eventType="valueChanged" id="AvD-fP-KCe"/>
+                                </connections>
                             </switch>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="B6l-QG-WXe">
                                 <rect key="frame" x="16" y="417" width="288" height="80"/>
@@ -230,6 +235,9 @@
                                 <state key="normal" title="ELIMINAR VIDEOJUEGO">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="myEliminarJuegoACT:" destination="6Ce-hz-dQs" eventType="touchUpInside" id="bZb-QJ-3Rv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -249,6 +257,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="e77-4G-6lh"/>
+                    <connections>
+                        <outlet property="myCuandoPrestadoGame" destination="7lb-Hh-DvW" id="rJz-Ux-5NZ"/>
+                        <outlet property="myEliminarJuegoBTN" destination="NQB-uZ-Bg2" id="1qB-5d-IMt"/>
+                        <outlet property="myImageGame" destination="i1s-LM-0qB" id="QUT-O6-29Z"/>
+                        <outlet property="myQuienPrestadoGame" destination="D4J-zp-hXK" id="GCH-5q-gTt"/>
+                        <outlet property="mySwitchBorrowed" destination="l4H-OS-zdp" id="ck6-p5-Qix"/>
+                        <outlet property="myTituloGame" destination="kFh-F1-ac1" id="WjZ-1y-NOB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T4C-G7-766" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -273,22 +289,22 @@
             <point key="canvasLocation" x="113" y="124"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="jgI-Wm-M1a">
+        <scene sceneID="J75-hV-xfx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EWd-Lk-MLP" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a5L-tl-Bam" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LV3-cM-DHn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vsl-aG-UkM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="6Ce-hz-dQs" kind="relationship" relationship="rootViewController" id="AbS-C9-QUG"/>
+                        <segue destination="6Ce-hz-dQs" kind="relationship" relationship="rootViewController" id="4Ly-6Y-QMT"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Djx-kN-kAf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="faC-U0-Pj8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2046" y="-635"/>
+            <point key="canvasLocation" x="2046" y="-640"/>
         </scene>
     </scenes>
     <resources>
