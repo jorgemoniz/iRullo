@@ -173,6 +173,12 @@ extension iRGameListViewController : UICollectionViewDelegate, UICollectionViewD
         
         customCell.myImageGame.image = UIImage(data: (gameModel.image as Data?)!)
         
+        customCell.layer.masksToBounds = false
+        customCell.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        customCell.layer.shadowColor = CONSTANTES.COLORES.GRIS_BARRA_NAV.cgColor
+        customCell.layer.shadowRadius = 2.0
+        customCell.layer.shadowOpacity = 0.2
+        
         return customCell
     }
     
@@ -203,5 +209,12 @@ extension String {
 extension iRGameListViewController : iRAddNewGameViewControllerDelegate {
     func didAddGame() {
         myCollectionView.reloadData()
+    }
+}
+
+//Se ajusta al tamaño de la pantalla -8 puntos por cada lado.
+extension iRGameListViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.view.frame.width - 16, height: 400.0)
     }
 }

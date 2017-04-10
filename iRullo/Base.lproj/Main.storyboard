@@ -110,7 +110,6 @@
                                             <outlet property="myBorrowedToGame" destination="fin-fg-p6K" id="hQh-0w-Lnj"/>
                                             <outlet property="myImageGame" destination="odI-6D-g5j" id="HdR-6I-Pv1"/>
                                             <outlet property="myTituloGame" destination="ejC-uL-RCU" id="dwN-aL-ABK"/>
-                                            <segue destination="6Ce-hz-dQs" kind="push" identifier="editGameSegue" id="iwv-hP-azp"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -132,6 +131,7 @@
                         <outlet property="myCollectionView" destination="6Fg-YM-pQb" id="DqK-X4-QOU"/>
                         <outlet property="myFilterSegmentCon" destination="GfL-5f-cAo" id="pqr-4y-6DA"/>
                         <segue destination="a5L-tl-Bam" kind="presentation" identifier="addGameSegue" id="5bD-3h-dEw"/>
+                        <segue destination="6Ce-hz-dQs" kind="show" identifier="editGameSegue" id="n38-Zq-whC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -319,6 +319,6 @@
         <image name="placeholder" width="640" height="640"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iwv-hP-azp"/>
+        <segue reference="n38-Zq-whC"/>
     </inferredMetricsTieBreakers>
 </document>
