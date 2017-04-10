@@ -31,6 +31,9 @@
                                     <segment title="Todos"/>
                                 </segments>
                                 <color key="tintColor" red="0.25490196078431371" green="0.27450980392156865" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="myShowFilterACTION:" destination="BYZ-38-t0r" eventType="valueChanged" id="1J5-9F-Fwd"/>
+                                </connections>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Fg-YM-pQb">
                                 <rect key="frame" x="8" y="108" width="304" height="452"/>

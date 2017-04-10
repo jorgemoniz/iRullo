@@ -200,12 +200,17 @@ class iRAddNewGameViewController: UIViewController {
                 editedGame?.borrowedDate = dateFormatter.date(from: myCuandoPrestadoGame.text!) as NSDate?
             }
             
-            do {
-                try context.save()
-                self.iRDelegate?.didAddGame()
-                //si todo se ha guardado correctamente, se añade un nuevo juego
-            } catch {
-                print("Error al guardar los datos en CoreData")
+            if myTituloGame.text != "" && myImageGame.image != nil {
+                
+                do {
+                    try context.save()
+                    self.iRDelegate?.didAddGame()
+                    //si todo se ha guardado correctamente, se añade un nuevo juego
+                } catch {
+                    print("Error al guardar los datos en CoreData")
+                }
+            } else {
+                present(muestraAlertVC("Estimado usuario", messageData: "Por favor, introduzca los datos", titleActionData: "OK"), animated: true, completion: nil)
             }
         }
     }
