@@ -13,7 +13,7 @@ class iRGameListViewController: UIViewController {
     
     //MARK: - Variables locales
     var manageContext : NSManagedObjectContext!
-    var listGame = [Game]()
+    var listGame : [Game]!
     
     //MARK: - IBOutlets
     @IBOutlet weak var myFilterSegmentCon: UISegmentedControl!
@@ -57,7 +57,7 @@ class iRGameListViewController: UIViewController {
         
         if segue.identifier == "editGameSegue" {
             let detalleVC = segue.destination as! iRAddNewGameViewController
-            
+            detalleVC.manageContext = manageContext
             //Tengo que poder hacer un push cuando toco
             let selectIndex = myCollectionView.indexPathsForSelectedItems?.first?.row
             let gameInd = listGame[selectIndex!]
@@ -110,8 +110,10 @@ class iRGameListViewController: UIViewController {
         //5
         do {
             let fetchGames = try manageContext.fetch(customRequest)
-            listGame = fetchGames
-            self.myCollectionView.reloadData()
+            
+                listGame = fetchGames
+                self.myCollectionView.reloadData()
+            
         } catch let error {
             print("Error: \(error.localizedDescription)")
         }
@@ -193,7 +195,6 @@ extension iRGameListViewController : UICollectionViewDelegate, UICollectionViewD
             performSegue(withIdentifier: "addGameSegue", sender: self)
         }
     }
-    
 }
 
 extension String {

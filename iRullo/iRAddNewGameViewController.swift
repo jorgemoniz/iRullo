@@ -223,17 +223,17 @@ class iRAddNewGameViewController: UIViewController {
 }
 
 //SNIPPET - myPickerPhoto
-extension iRAddNewGameViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+extension iRAddNewGameViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func pickerPhoto(){
-        if UIImagePickerController.isSourceTypeAvailable(.camera){
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
             muestraMenu()
-        }else{
+        } else {
             muestraLibreriaFotos()
         }
     }
     
-    func muestraMenu(){
+    func muestraMenu() {
         let alertVC = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
         let tomaFotoAction = UIAlertAction(title: "Toma Foto", style: .default) { _ in
@@ -248,7 +248,7 @@ extension iRAddNewGameViewController : UIImagePickerControllerDelegate, UINaviga
         present(alertVC, animated: true, completion: nil)
     }
     
-    func muestraCamara(){
+    func muestraCamara() {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .camera
         imagePicker.delegate = self
@@ -257,7 +257,7 @@ extension iRAddNewGameViewController : UIImagePickerControllerDelegate, UINaviga
     }
     
     
-    func muestraLibreriaFotos(){
+    func muestraLibreriaFotos() {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
@@ -267,12 +267,11 @@ extension iRAddNewGameViewController : UIImagePickerControllerDelegate, UINaviga
     
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let imageData = info[UIImagePickerControllerOriginalImage] as? UIImage{
+        if let imageData = info[UIImagePickerControllerOriginalImage] as? UIImage {
             myImageGame.image = imageData
         }
         dismiss(animated: true, completion: nil)
     }
-    
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
